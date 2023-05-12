@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfsy3kmkb4ouw"]
+[gd_scene load_steps=13 format=3 uid="uid://dp8cwom2wbl13"]
 
-[ext_resource type="Texture2D" uid="uid://bwg3l3bnef5th" path="res://scenes/game_object/player/player.png" id="1_45jhl"]
+[ext_resource type="Texture2D" uid="uid://ci17seyporyro" path="res://scenes/game_object/player/player.png" id="1_45jhl"]
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_ces66"]
 [ext_resource type="PackedScene" uid="uid://bjph1evnfewuf" path="res://scenes/ability/sword_ability_controller/sword_ability_controllers.tscn" id="2_8s4ww"]
 [ext_resource type="PackedScene" uid="uid://cjambu5ry6h5f" path="res://scenes/component/health_component.tscn" id="2_hat08"]
