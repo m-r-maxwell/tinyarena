@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw5a3grnmk2gn"]
+[gd_scene load_steps=16 format=3 uid="uid://cw5a3grnmk2gn"]
 
 [ext_resource type="PackedScene" uid="uid://cjambu5ry6h5f" path="res://scenes/component/health_component.tscn" id="1_ldf3w"]
 [ext_resource type="Script" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_rqt0k"]
@@ -7,6 +7,47 @@
 [ext_resource type="Texture2D" uid="uid://evregg5k3atl" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="3_1jdok"]
 [ext_resource type="PackedScene" uid="uid://c1gocgsyk0yrl" path="res://scenes/component/velocity_component.tscn" id="3_nr46k"]
 [ext_resource type="PackedScene" uid="uid://bxt2h1ojsggaa" path="res://scenes/component/hurt_box_component.tscn" id="4_igrwy"]
+[ext_resource type="PackedScene" uid="uid://caa8vv2w2j0lb" path="res://scenes/component/hit_flash_component.tscn" id="5_rmvn6"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_w2sna"]
+
+[sub_resource type="Animation" id="Animation_bdpd0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_qpym4"]
 resource_name = "walk"
@@ -67,50 +108,16 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_bdpd0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/Sprite2D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0xga8"]
 _data = {
 "RESET": SubResource("Animation_bdpd0"),
 "walk": SubResource("Animation_qpym4")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rn4xj"]
+resource_local_to_scene = true
+shader = ExtResource("6_w2sna")
+shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqjls"]
 radius = 8.0
@@ -139,6 +146,11 @@ max_health = 30.0
 [node name="VelocityComponent" parent="." instance=ExtResource("3_nr46k")]
 max_speed = 60
 acceleration = 20.0
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_rmvn6")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_rn4xj")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_sohvx")]
 health_component = NodePath("../HealthComponent")
