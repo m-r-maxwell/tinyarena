@@ -5,8 +5,13 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pks4v"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuowr"]
-bg_color = Color(0.152941, 0.368627, 0.137255, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khm6g"]
+bg_color = Color(0.411765, 0.866667, 0.713726, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="ExperienceBar" type="CanvasLayer"]
 
@@ -25,7 +30,7 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme = SubResource("Theme_uv4wq")
 theme_override_styles/background = SubResource("StyleBoxFlat_pks4v")
-theme_override_styles/fill = SubResource("StyleBoxFlat_nuowr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_khm6g")
 max_value = 1.0
 value = 0.5
 show_percentage = false
