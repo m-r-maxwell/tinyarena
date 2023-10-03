@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 150
-const ACCELERATION_SMOOTHING = 25
 
+@onready var velocity_component = $VelocityComponent
 @onready var damage_timer = $DamgerIntervalTimer
 @onready var health_component = $HealthComponent
 @onready var health_bar = $HealthBar
@@ -11,9 +10,11 @@ const ACCELERATION_SMOOTHING = 25
 @onready var visuals = $Visuals
 
 var number_colliding_bodies = 0
+var base_speed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	base_speed = velocity_component.max_speed
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_timer.timeout.connect(on_damage_timer_timeout)
@@ -26,9 +27,8 @@ func _ready():
 func _process(delta):
 	var movement_vector = get_movement_vector()
 	var directon = movement_vector.normalized()
-	var target_velocity = directon * MAX_SPEED
-	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
-	move_and_slide()
+	velocity_component.accelerate_in_direction(directon)
+	velocity_component.move(self)
 	
 	if movement_vector.x != 0 || movement_vector.y != 0:
 		animation_player.play("walk")
@@ -53,7 +53,7 @@ func check_deal_damage():
 	health_component.damage(1)
 	damage_timer.start()
 	
-	print(health_component.current_health)
+	#print(health_component.current_health)
 
 
 func update_health_display():
@@ -72,13 +72,13 @@ func on_damage_timer_timeout():
 
 
 func on_health_changed():
+	GameEvents.emit_player_damager()
 	update_health_display()
 
 
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	if not ability_upgrade is Ability:
-		return
-		
-	var ability = ability_upgrade as Ability
-	abilities.add_child(ability.ability_controller_scene.instantiate())
-	
+	if ability_upgrade is Ability:	
+		var ability = ability_upgrade as Ability
+		abilities.add_child(ability.ability_controller_scene.instantiate())
+	elif ability_upgrade.id == "player_speed":
+		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["quantity"] * .1)

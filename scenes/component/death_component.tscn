@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwke3ows6ybxd"]
+[gd_scene load_steps=10 format=3 uid="uid://dwke3ows6ybxd"]
 
 [ext_resource type="Texture2D" uid="uid://np3bj2g4vxda" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_5tf4b"]
 [ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_lxvaw"]
+[ext_resource type="PackedScene" uid="uid://053l6wqsv6rt" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="3_e4ken"]
 
 [sub_resource type="Animation" id="Animation_rubyo"]
 length = 0.001
@@ -90,3 +91,6 @@ lifetime = 0.5
 one_shot = true
 fixed_fps = 0
 interpolate = false
+
+[node name="HitAudioPlayerComponent" parent="." instance=ExtResource("3_e4ken")]
+max_distance = 300.0

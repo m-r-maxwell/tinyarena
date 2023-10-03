@@ -1,0 +1,13 @@
+[gd_scene load_steps=7 format=3 uid="uid://053l6wqsv6rt"]
+
+[ext_resource type="Script" path="res://scenes/component/random_audio_stream_player_2d_component.gd" id="1_u5agg"]
+[ext_resource type="AudioStream" uid="uid://wva48wgmaxyd" path="res://assets/audio/footstep_carpet_000.ogg" id="2_xkguq"]
+[ext_resource type="AudioStream" uid="uid://beo1lwfheviyr" path="res://assets/audio/footstep_carpet_001.ogg" id="3_ue0c6"]
+[ext_resource type="AudioStream" uid="uid://cwi3rcb0b2kso" path="res://assets/audio/footstep_carpet_002.ogg" id="4_0shls"]
+[ext_resource type="AudioStream" uid="uid://w64mfxvia3ml" path="res://assets/audio/footstep_carpet_003.ogg" id="5_t1lx0"]
+[ext_resource type="AudioStream" uid="uid://dvadi4iuagr8n" path="res://assets/audio/footstep_carpet_004.ogg" id="6_mwppu"]
+
+[node name="RandomAudioStreamPlayer2DComponent" type="AudioStreamPlayer2D"]
+bus = &"sfx"
+script = ExtResource("1_u5agg")
+streams = Array[AudioStream]([ExtResource("2_xkguq"), ExtResource("3_ue0c6"), ExtResource("4_0shls"), ExtResource("5_t1lx0"), ExtResource("6_mwppu")])

@@ -1,6 +1,8 @@
 extends Area2D
 class_name HurtboxComponent
 
+signal hit
+
 @export var health_component: HealthComponent
 
 #this is a way to add a scene without adding it to the inspector, but
@@ -31,3 +33,4 @@ func on_area_entered(other_area: Area2D):
 	if round(hitbox_compoent.damage) == hitbox_compoent.damage:
 		format_string = "%0.0f"
 	floating_text.start(format_string %hitbox_compoent.damage)
+	hit.emit()
