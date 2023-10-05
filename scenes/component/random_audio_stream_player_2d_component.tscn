@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dvadi4iuagr8n" path="res://assets/audio/footstep_carpet_004.ogg" id="6_mwppu"]
 
 [node name="RandomAudioStreamPlayer2DComponent" type="AudioStreamPlayer2D"]
+max_distance = 300.0
 bus = &"sfx"
 script = ExtResource("1_u5agg")
 streams = Array[AudioStream]([ExtResource("2_xkguq"), ExtResource("3_ue0c6"), ExtResource("4_0shls"), ExtResource("5_t1lx0"), ExtResource("6_mwppu")])
