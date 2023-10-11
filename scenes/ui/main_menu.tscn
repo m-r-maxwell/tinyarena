@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://g4tfpoexugad"]
+[gd_scene load_steps=5 format=3 uid="uid://g4tfpoexugad"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_agawo"]
 [ext_resource type="TileSet" uid="uid://b0obvl8h56q8g" path="res://resource/tileset.tres" id="1_p2aao"]
+[ext_resource type="PackedScene" uid="uid://g4snpwwhwqmo" path="res://scenes/ui/vignette.tscn" id="2_4ar5u"]
 [ext_resource type="PackedScene" uid="uid://ty4w45bdatg5" path="res://scenes/ui/sound_button.tscn" id="2_55qrt"]
 
 [node name="MainMenu" type="CanvasLayer"]
@@ -39,6 +40,7 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 theme_override_font_sizes/font_size = 32
 text = "Tiny Arena
 "
@@ -59,3 +61,5 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Quit
 "
+
+[node name="Vignette" parent="." instance=ExtResource("2_4ar5u")]
