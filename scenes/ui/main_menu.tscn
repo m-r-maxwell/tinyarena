@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ty4w45bdatg5" path="res://scenes/ui/sound_button.tscn" id="2_55qrt"]
 
 [node name="MainMenu" type="CanvasLayer"]
+layer = 11
 script = ExtResource("1_agawo")
 
 [node name="TileMap" type="TileMap" parent="."]

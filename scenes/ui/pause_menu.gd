@@ -23,11 +23,15 @@ func on_resume_pressed():
 	closed()
 
 func on_options_pressed():
+#	ScreenTransition.transition()
+#	await ScreenTransition.transition_halfway
 	var options_scene_instance = options.instantiate()
 	add_child(options_scene_instance)
 	options_scene_instance.back_pressed.connect(on_options_back_pressed.bind(options_scene_instance))
 	
 func on_quit_pressed():
+#	ScreenTransition.transition()
+#	await ScreenTransition.transition_halfway
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 	
@@ -56,4 +60,6 @@ func closed():
 
 
 func on_options_back_pressed(options_menu: Node):
+#	ScreenTransition.transition()
+#	await ScreenTransition.transition_halfway
 	options_menu.queue_free()
