@@ -12,6 +12,7 @@ func on_player_died():
 	var end_screne_instance = end_screen_scene.instantiate()
 	add_child(end_screne_instance)
 	end_screne_instance.set_defeat() #this has to be in the scene tree before we can do this
+	MetaProgression.save()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
