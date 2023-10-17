@@ -10,7 +10,7 @@ func _ready():
 	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	
 	get_tree().paused = true
-	$%RestartButton.pressed.connect(on_restart_button_pressed)
+	$%ContinueButton.pressed.connect(on_continue_button_pressed)
 	$%QuitButton.pressed.connect(on_quit_button_pressed)
 	
 	
@@ -26,14 +26,14 @@ func play_jingle(defeat: bool = false):
 		$VictoryStreamPlayer.play_random()
 	
 	
-func on_restart_button_pressed():
-
+func on_continue_button_pressed():
 #	ScreenTransition.transition()
 #	await ScreenTransition.transition_halfway
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/main/main.tscn") 
+	get_tree().change_scene_to_file("res://scenes/ui/meta_menu.tscn") 
 	#this is how we change to different things like menus
 	
 func on_quit_button_pressed():
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	get_tree().paused = false
 	
