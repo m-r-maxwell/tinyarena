@@ -10,6 +10,7 @@ var upgrade_axe_damage = preload("res://resource/upgrades/axe_damage.tres")
 var upgrade_sword_rate = preload("res://resource/upgrades/sword_rate.tres")
 var upgrade_sword_damage = preload("res://resource/upgrades/sword_damage.tres")
 var upgrade_player_speed = preload("res://resource/upgrades/player_speed.tres")
+var upgrade_dagger = preload("res://resource/upgrades/dagger.tres")
 
 var current_upgrades = {
 	
@@ -20,6 +21,7 @@ func _ready():
 	upgrade_pool.add_item(upgrade_axe, 10)
 	upgrade_pool.add_item(upgrade_sword_rate, 10)
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
+	upgrade_pool.add_item(upgrade_dagger, 10)
 	upgrade_pool.add_item(upgrade_player_speed, 5)
 	
 	experience_manager.level_up.connect(on_level_up)

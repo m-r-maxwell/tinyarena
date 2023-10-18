@@ -13,7 +13,7 @@ func on_died():
 	var exp_gain_upgrade_count = MetaProgression.get_upgrade_count("experience_gain")
 	
 	if exp_gain_upgrade_count > 0:
-		adjusted_drop_percent += .1
+		adjusted_drop_percent += .1 * exp_gain_upgrade_count
 	
 	
 	if randf() > adjusted_drop_percent:

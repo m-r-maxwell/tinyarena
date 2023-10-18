@@ -44,6 +44,10 @@ func update_progress():
 func on_purchase_press():
 	if upgrade == null:
 		return
+	if upgrade.max_quantity == upgrade["max_quantity"]:
+		purchase_button.text = "Max Quantity"
+		purchase_button.disabled = true
+		
 	MetaProgression.add_meta_upgrade(upgrade)
 	MetaProgression.save_data["meta_upgrade_currency"] -= upgrade.experience_cost
 	MetaProgression.save()
