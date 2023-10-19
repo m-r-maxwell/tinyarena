@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_cot2v")
 id = "experience_gain"
-max_quantity = 8
+max_quantity = 9
 title = "Increase Experience"
 experience_cost = 100
 description = "Increases experience drop change by 10%"

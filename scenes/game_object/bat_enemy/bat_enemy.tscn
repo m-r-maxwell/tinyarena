@@ -91,23 +91,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.5, 0.8), Vector2(0.9, 1.1)]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.05, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [true],
-"method": &"set_is_moving"
-}, {
-"args": [false],
-"method": &"set_is_moving"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0xga8"]
 _data = {
@@ -115,7 +98,7 @@ _data = {
 "walk": SubResource("Animation_qpym4")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6korv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eq3kn"]
 resource_local_to_scene = true
 shader = ExtResource("6_6mf8q")
 shader_parameter/lerp_percent = 0.0
@@ -151,7 +134,7 @@ acceleration = 0.75
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_welyc")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_6korv")
+hit_flash_material = SubResource("ShaderMaterial_eq3kn")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_ac2ne")]
 health_component = NodePath("../HealthComponent")

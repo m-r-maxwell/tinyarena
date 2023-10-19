@@ -11,6 +11,7 @@ var upgrade_sword_rate = preload("res://resource/upgrades/sword_rate.tres")
 var upgrade_sword_damage = preload("res://resource/upgrades/sword_damage.tres")
 var upgrade_player_speed = preload("res://resource/upgrades/player_speed.tres")
 var upgrade_dagger = preload("res://resource/upgrades/dagger.tres")
+var upgrade_dagger_count = preload("res://resource/upgrades/dagger_amount.tres")
 
 var current_upgrades = {
 	
@@ -51,6 +52,8 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if chosen_upgrade.id == upgrade_axe.id:
 		upgrade_pool.add_item(upgrade_axe_damage, 10)
+	elif chosen_upgrade.id == upgrade_dagger_count.id:
+		upgrade_pool.add_item(upgrade_dagger_count, 10)
 
 
 func pick_upgrades():
